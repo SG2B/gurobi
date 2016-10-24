@@ -16,9 +16,6 @@ if [ -f $license ]; then
     gurobi.sh $1
 else
     echo "Configure license $GUROBI_LICENSE"
-
-    grbgetkey $GUROBI_LICENSE
-    expect "Assign license key to user 'gurobi' on this machine? \[Y/n\]"
-	send "Y"
+    echo -ne '\n' | grbgetkey $GUROBI_LICENSE
     gurobi.sh $1
 fi
